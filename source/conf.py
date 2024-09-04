@@ -32,3 +32,5 @@ language = 'en'
 locale_dirs = ['../locales/']   # path is example but recommended.
 gettext_compact = False  # optional.
 gettext_uuid = True  # optional.
+
+extensions = ['recommonmark','sphinx_markdown_tables']
