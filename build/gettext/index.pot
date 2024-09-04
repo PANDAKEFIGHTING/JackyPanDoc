@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JACKYDOCS \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-03 22:52+0800\n"
+"POT-Creation-Date: 2024-09-04 12:46+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../source/index.rst:14
+#: 
 msgid "Contents:"
 msgstr ""
 
 #: ../../source/index.rst:7
+#: 553ec4cc1d76475ab9fc7860d1cf9b0a
 msgid "JACKYDOCS documentation"
 msgstr ""
 
 #: ../../source/index.rst:9
+#: e2e73a70a3ab447e9cddff7b68e6dfa9
 msgid "Add your content using ``reStructuredText`` syntax. See the `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_ documentation for details."
 msgstr ""
