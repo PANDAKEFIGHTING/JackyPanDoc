@@ -13,7 +13,8 @@ documentation for details.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: DOCS:
    
    markdown.md
+   markdown1.md
 
