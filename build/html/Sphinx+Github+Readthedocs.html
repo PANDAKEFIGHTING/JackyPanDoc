@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sphinx+Github+Readthedocs &mdash; JACKYDOCS v1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e160b93e"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="LINUX 系统初始化脚本" href="Linux%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            JACKYDOCS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">DOCS:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Linux%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96.html">LINUX 系统初始化脚本</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sphinx+Github+Readthedocs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-pip-gitgithubreadthedocs">前置环境装备：Python(pip)、Git、Github账户、ReadTheDocs账户</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx-sphinx">Sphinx 及Sphinx组件安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#git">创建本地文档目录（也是Git根目录）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#html">编译生成HTML和静态文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">本地编译部署测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conf-py">修改conf.py文件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sphinx">配置Sphinx主题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index-rst">配置index.rst文档</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#markdown">配置支持Markdown插件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recommonmark">配置recommonmark插件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">配置支持markdown表格插件</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Sphinx 相关安装报错：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#githubgit-bash">Github及Git bash命令</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#github">配置连接github免密</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">git初始化和提交上传</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Github及Git bash命令报错：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#readthedocs">Readthedocs构建</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">构建导入的项目代码库</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Readthedocs构建报错：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">JACKYDOCS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sphinx+Github+Readthedocs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Sphinx+Github+Readthedocs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sphinx-github-readthedocs">
+<h1>Sphinx+Github+Readthedocs<a class="headerlink" href="#sphinx-github-readthedocs" title="Link to this heading"></a></h1>
+<section id="python-pip-gitgithubreadthedocs">
+<h2>前置环境装备：Python(pip)、Git、Github账户、ReadTheDocs账户<a class="headerlink" href="#python-pip-gitgithubreadthedocs" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>系统：Windows 11</p></li>
+<li><p>Python</p>
+<ul>
+<li><p>网址：<a class="reference external" href="https://www.python.org/downloads/">Download Python | Python.org</a></p></li>
+<li><p>安装略</p></li>
+</ul>
+</li>
+</ul>
+<p>[^注意]: 安装需要注意勾选“Add python.exe to PATH”</p>
+<p><img alt="_images/python.png" src="_images/python.png" /></p>
+<ul class="simple">
+<li><p>Git</p>
+<ul>
+<li><p>网址：https://git-scm.com/</p></li>
+<li><p>安装略,没太多要求直接下一步到位。</p></li>
+</ul>
+</li>
+<li><p>Github</p>
+<ul>
+<li><p>网址：https://github.com/</p></li>
+<li><p>账户注册略</p></li>
+</ul>
+</li>
+<li><p>Readthedocs</p>
+<ul>
+<li><p>网址：https://readthedocs.io/ 或 https://app.readthedocs.org/</p></li>
+<li><p>账号注册略</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="sphinx-sphinx">
+<h2>Sphinx 及Sphinx组件安装<a class="headerlink" href="#sphinx-sphinx" title="Link to this heading"></a></h2>
+<section id="git">
+<h3>创建本地文档目录（也是Git根目录）<a class="headerlink" href="#git" title="Link to this heading"></a></h3>
+<p>创建文件夹目录名为Demo，也作为本地仓库的根目录</p>
+<p>安装完成Python会附带安装pip工具安装如下组件</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">sphinx</span> <span class="pre">sphinx_rtd_theme</span> <span class="pre">sphinx-autobuild</span> <span class="pre">recommonmark</span> <span class="pre">sphinx_markdown_tables</span></code></p>
+<p>sphinx初始化</p>
+<p><code class="docutils literal notranslate"><span class="pre">sphinx-quickstart</span></code></p>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span>C:\Users\User\Desktop\Demo&gt;sphinx-quickstart
+Welcome to the Sphinx 7.4.7 quickstart utility.
+
+Please enter values for the following settings (just press Enter to
+accept a default value, if one is given in brackets).
+
+Selected root path: .
+
+You have two options for placing the build directory for Sphinx output.
+Either, you use a directory &quot;_build&quot; within the root path, or you separate
+&quot;source&quot; and &quot;build&quot; directories within the root path.
+
+&gt; Separate source and build directories (y/n) [n]: y
+
+The project name will occur in several places in the built documentation.
+
+&gt; Project name: Demo
+&gt; Author name(s): Jacky
+&gt; Project release []: v1.0
+
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-language.
+
+&gt; Project language [en]: zh_CN
+
+Creating file C:\Users\User\Desktop\Demo\source\conf.py.
+Creating file C:\Users\User\Desktop\Demo\source\index.rst.
+Creating file C:\Users\User\Desktop\Demo\Makefile.
+Creating file C:\Users\User\Desktop\Demo\make.bat.
+
+Finished: An initial directory structure has been created.
+
+You should now populate your master file C:\Users\User\Desktop\Demo\source\index.rst and create other documentation
+source files. Use the Makefile to build the docs, like so:
+   make builder
+where &quot;builder&quot; is one of the supported builders, e.g. html, latex or linkcheck.
+</pre></div>
+</div>
+</section>
+<section id="html">
+<h3>编译生成HTML和静态文件<a class="headerlink" href="#html" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code></p>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span>C:\Users\User\Desktop\Demo&gt;make html
+Running Sphinx v7.4.7
+loading translations [zh_CN]... done
+making output directory... done
+building [mo]: targets for 0 po files that are out of date
+writing output...
+building [html]: targets for 1 source files that are out of date
+updating environment: [new config] 1 added, 0 changed, 0 removed
+reading sources... [100%] index
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+copying assets...
+copying static files... done
+copying extra files... done
+copying assets: done
+writing output... [100%] index
+generating indices... genindex done
+writing additional pages... search done
+dumping search index in Chinese (code: zh)... done
+dumping object inventory... done
+build succeeded.
+
+The HTML pages are in build\html.
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>本地编译部署测试<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span> <span class="pre">source</span> <span class="pre">build/html</span> </code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\D</span>esktop<span class="se">\D</span>emo&gt;sphinx-autobuild<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build/html
+<span class="o">[</span>sphinx-autobuild<span class="o">]</span><span class="w"> </span>Starting<span class="w"> </span>initial<span class="w"> </span>build
+<span class="o">[</span>sphinx-autobuild<span class="o">]</span><span class="w"> </span>&gt;<span class="w"> </span>sphinx-build<span class="w"> </span><span class="nb">source</span><span class="w"> </span>build/html
+Running<span class="w"> </span>Sphinx<span class="w"> </span>v7.4.7
+loading<span class="w"> </span>translations<span class="w"> </span><span class="o">[</span>zh_CN<span class="o">]</span>...<span class="w"> </span><span class="k">done</span>
+building<span class="w"> </span><span class="o">[</span>mo<span class="o">]</span>:<span class="w"> </span>targets<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>po<span class="w"> </span>files<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>out<span class="w"> </span>of<span class="w"> </span>date
+writing<span class="w"> </span>output...
+building<span class="w"> </span><span class="o">[</span>html<span class="o">]</span>:<span class="w"> </span>targets<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>files<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>out<span class="w"> </span>of<span class="w"> </span>date
+updating<span class="w"> </span>environment:<span class="w"> </span><span class="o">[</span>new<span class="w"> </span>config<span class="o">]</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>added,<span class="w"> </span><span class="m">0</span><span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>removed
+reading<span class="w"> </span>sources...<span class="w"> </span><span class="o">[</span><span class="m">100</span>%<span class="o">]</span><span class="w"> </span>index
+looking<span class="w"> </span><span class="k">for</span><span class="w"> </span>now-outdated<span class="w"> </span>files...<span class="w"> </span>none<span class="w"> </span>found
+pickling<span class="w"> </span>environment...<span class="w"> </span><span class="k">done</span>
+checking<span class="w"> </span>consistency...<span class="w"> </span><span class="k">done</span>
+preparing<span class="w"> </span>documents...<span class="w"> </span><span class="k">done</span>
+copying<span class="w"> </span>assets...
+copying<span class="w"> </span>static<span class="w"> </span>files...<span class="w"> </span><span class="k">done</span>
+copying<span class="w"> </span>extra<span class="w"> </span>files...<span class="w"> </span><span class="k">done</span>
+copying<span class="w"> </span>assets:<span class="w"> </span><span class="k">done</span>
+writing<span class="w"> </span>output...<span class="w"> </span><span class="o">[</span><span class="m">100</span>%<span class="o">]</span><span class="w"> </span>index
+generating<span class="w"> </span>indices...<span class="w"> </span>genindex<span class="w"> </span><span class="k">done</span>
+writing<span class="w"> </span>additional<span class="w"> </span>pages...<span class="w"> </span>search<span class="w"> </span><span class="k">done</span>
+dumping<span class="w"> </span>search<span class="w"> </span>index<span class="w"> </span><span class="k">in</span><span class="w"> </span>Chinese<span class="w"> </span><span class="o">(</span>code:<span class="w"> </span>zh<span class="o">)</span>...<span class="w"> </span><span class="k">done</span>
+dumping<span class="w"> </span>object<span class="w"> </span>inventory...<span class="w"> </span><span class="k">done</span>
+build<span class="w"> </span>succeeded.
+
+The<span class="w"> </span>HTML<span class="w"> </span>pages<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span>build<span class="se">\h</span>tml.
+<span class="o">[</span>sphinx-autobuild<span class="o">]</span><span class="w"> </span>Serving<span class="w"> </span>on<span class="w"> </span>http://127.0.0.1:8000
+<span class="o">[</span>sphinx-autobuild<span class="o">]</span><span class="w"> </span>Waiting<span class="w"> </span>to<span class="w"> </span>detect<span class="w"> </span>changes...
+</pre></div>
+</div>
+</section>
+<section id="conf-py">
+<h3>修改conf.py文件<a class="headerlink" href="#conf-py" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li></li>
+</ul>
+<section id="sphinx">
+<h4>配置Sphinx主题<a class="headerlink" href="#sphinx" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html_logo</span> <span class="o">=</span> <span class="s1">&#39;_static/logo.png&#39;</span>  <span class="o">---</span><span class="n">修改顶部logo</span>
+<span class="n">html_last_updated_fmt</span> <span class="o">=</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1">, %Y&#39;</span>
+<span class="n">html_domain_indices</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<li></li>
+<section id="index-rst">
+<h4>配置index.rst文档<a class="headerlink" href="#index-rst" title="Link to this heading"></a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Welcome to JACKYDOCS.
+=======================
+
+Add your content using ``reStructuredText`` syntax. See the
+`reStructuredText &lt;https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html&gt;`_
+documentation for details.
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: DOCS:
+
+   markdown.md
+   markdown1.md
+   Sphinx+Github+Readthedocs.md
+</pre></div>
+</div>
+</section>
+<li></li>
+<section id="markdown">
+<h4>配置支持Markdown插件<a class="headerlink" href="#markdown" title="Link to this heading"></a></h4>
+</section>
+<li></li>
+<section id="recommonmark">
+<h4>配置recommonmark插件<a class="headerlink" href="#recommonmark" title="Link to this heading"></a></h4>
+</section>
+<li></li>
+<section id="id2">
+<h4>配置支持markdown表格插件<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+</section>
+<section id="id3">
+<h4>Sphinx 相关安装报错：<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+</section>
+</section>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration file for the Sphinx documentation builder.</span>
+<span class="c1">#</span>
+<span class="c1"># For the full list of built-in configuration values, see the documentation:</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html</span>
+
+<span class="c1"># -- Project information -----------------------------------------------------</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information</span>
+
+<span class="nv">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Demo&#39;</span>
+<span class="nv">copyright</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2024, Jacky&#39;</span>
+<span class="nv">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Jacky&#39;</span>
+<span class="nv">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;v1.0&#39;</span>
+
+<span class="c1"># -- General configuration ---------------------------------------------------</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration</span>
+
+<span class="nv">extensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+
+<span class="nv">templates_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s1">&#39;_templates&#39;</span><span class="o">]</span>
+<span class="nv">exclude_patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+
+<span class="nv">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;zh_CN&#39;</span>
+
+<span class="c1"># -- Options for HTML output -------------------------------------------------</span>
+<span class="c1"># https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output</span>
+
+<span class="c1">#html_theme = &#39;alabaster&#39; 	---注释该行 </span>
+<span class="nv">html_static_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s1">&#39;_static&#39;</span><span class="o">]</span><span class="w"> </span>
+<span class="nv">html_theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sphinx_rtd_theme&quot;</span><span class="w">		</span>---修改主题
+<span class="nv">extensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s1">&#39;recommonmark&#39;</span><span class="o">]</span><span class="w">		</span>---添扩展支持
+</pre></div>
+</div>
+</section>
+<section id="githubgit-bash">
+<h2>Github及Git bash命令<a class="headerlink" href="#githubgit-bash" title="Link to this heading"></a></h2>
+<section id="github">
+<h3>配置连接github免密<a class="headerlink" href="#github" title="Link to this heading"></a></h3>
+<p>要在Git中链接到GitHub，您需要设置Git的全局用户信息以及创建SSH密钥，并将SSH公钥添加到GitHub账户中。以下是步骤和示例代码：</p>
+<ol class="simple">
+<li><p>设置Git的全局用户信息：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Jacky&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;dake323@126.com&quot;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>创建SSH密钥对（如果已有，可以跳过这一步）：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;dake323@126.com&quot;</span>
+</pre></div>
+</div>
+<ol>
+<li><p>将SSH公钥添加到GitHub账户：</p>
+<p>首先，复制SSH公钥到剪贴板：</p>
+</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>clip<span class="w">	</span><span class="c1">#linux</span>
+C:<span class="se">\U</span>sers<span class="se">\U</span>ser<span class="se">\.</span>ssh<span class="w"> 		</span><span class="c1">#windows,打开id_rsa.pub复制SSH公钥到剪贴板</span>
+</pre></div>
+</div>
+<p>或者在Linux/Mac中：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>xclip<span class="w"> </span>-selection<span class="w"> </span>clipboard
+</pre></div>
+</div>
+<p>然后，登录GitHub，在设置（Settings）中找到SSH和GPG密钥（SSH and GPG keys），点击“New SSH key”，粘贴你的SSH公钥进去，保存即可。</p>
+<p><img alt="_images/github_sshkey.png" src="_images/github_sshkey.png" /></p>
+<ol class="simple">
+<li><p>测试SSH连接：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>克隆GitHub仓库或者添加远程仓库到现有的本地仓库：</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:your_username/your_repository.git
+<span class="c1"># 或者，如果你已经有了本地仓库</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:PANDAKEFIGHTING/Demo.git
+</pre></div>
+</div>
+<p>完成以上步骤后，你的本地Git环境就与GitHub账户链接起来了，可以开始使用Git进行版本控制和与GitHub互动。</p>
+</section>
+<section id="id4">
+<h3>git初始化和提交上传<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;commit log&quot;</span>
+git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>master
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>master
+</pre></div>
+</div>
+<section id="id5">
+<h4>Github及Git bash命令报错：<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+</section>
+</section>
+</section>
+<section id="readthedocs">
+<h2>Readthedocs构建<a class="headerlink" href="#readthedocs" title="Link to this heading"></a></h2>
+<section id="id6">
+<h3>构建导入的项目代码库<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>选择需要的代码库：</p>
+<p>需要</p>
+<p><img alt="_images/readthedoc_import_project.png" src="_images/readthedoc_import_project.png" /></p>
+<p><img alt="_images/readthedoc_import_build.png" src="_images/readthedoc_import_build.png" /></p>
+<section id="id7">
+<h4>Readthedocs构建报错：<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="err">ERROR1:</span>
+<span class="err">Requirement already satisfied: sphinx in /home/docs/checkouts/readthedocs.org/user_builds/jacky-demo/envs/latest/lib/python3.12/site-packages (from -r requirements.txt (line 1)) (8.0.2) ERROR: Could not find a version that satisfies the requirement sphinx_rts_theme (from versions: none) ERROR: No matching distribution found for sphinx_rts_theme</span>
+</pre></div>
+</div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="err">解决办法：</span>
+<span class="err">添加如下信息到requirements.txt</span>
+<span class="err">sphinx==7.1.2</span>
+<span class="err">sphinx-rtd-theme==1.3.0rc1</span>
+<span class="err">recommonmark</span>
+<span class="err">sphinx_markdown_tables</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Linux%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96.html" class="btn btn-neutral float-left" title="LINUX 系统初始化脚本" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, PANDAKE.
+      <span class="lastupdated">Last updated on Sep 05, 2024.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

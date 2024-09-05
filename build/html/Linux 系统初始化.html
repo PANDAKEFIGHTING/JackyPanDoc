@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LINUX 系统初始化脚本 &mdash; JACKYDOCS v1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e160b93e"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            JACKYDOCS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">DOCS:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="markdown1.html">1 Markdown.com.cn 简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown1.html#markdown">2 Markdown语法教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown1.html#id2">一级标题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sphinx%2BGithub%2BReadthedocs.html">Sphinx+Github+Readthedocs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">JACKYDOCS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">LINUX 系统初始化脚本</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Linux 系统初始化.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="linux">
+<h1>LINUX 系统初始化脚本<a class="headerlink" href="#linux" title="Link to this heading"></a></h1>
+<section id="cent-os-rocky-system-init">
+<h2>Cent OS (Rocky) System INIT<a class="headerlink" href="#cent-os-rocky-system-init" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/sh 
+
+# 输出初始化信息
+cat &lt;&lt; EOF 
+CentOS system INIT. Editor by PANDAKE.
+EOF 
+
+# 禁用IPv6
+cat &lt;&lt; EOF 
+| === Welcome to Disable IPV6 === | 
++--------------------------------------------------------------+ 
+EOF 
+
+# 将IPv6的模块别名设置为关闭
+echo &quot;alias net-pf-10 off&quot; &gt;&gt; /etc/modprobe.conf 
+echo &quot;alias ipv6 off&quot; &gt;&gt; /etc/modprobe.conf 
+
+# 关闭ip6tables服务，确保IPv6被禁用
+/sbin/chkconfig --level 35 ip6tables off 
+echo &quot;ipv6 is disabled!&quot; 
+
+# 禁用SELinux
+# 修改SELinux配置文件，将模式设置为disabled
+sed -i &#39;/SELINUX/s/enforcing/disabled/&#39; /etc/selinux/config 
+echo &quot;selinux is disabled, effective after restart!&quot; 
+
+# 设置默认编辑器为vim
+# 在.bashrc中添加别名，将vi替换为vim
+sed -i &quot;8 s/^/alias vi=&#39;vim&#39;/&quot; /root/.bashrc 
+# 创建.vimrc文件并开启语法高亮
+echo &#39;syntax on&#39; &gt; /root/.vimrc 
+
+# 设置系统语言为中文
+# 修改系统语言配置文件，将LANG设置为zh_CN.UTF-8
+sed -i -e &#39;s/^LANG=.*/LANG=&quot;zh_CN.UTF-8&quot;/&#39; /etc/sysconfig/i18n 
+
+# 配置文件描述符最大限制为52100
+# 在limits.conf中设置软限制和硬限制
+echo &quot;* soft nofile 52100 
+* hard nofile 52100&quot; &gt;&gt; /etc/security/limits.conf 
+
+# 关闭不必要的服务
+#-------------------------------------------------------------------------------- 
+cat &lt;&lt; EOF 
+Welcome to trunoff services
+EOF 
+#--------------------------------------------------------------------------------- 
+
+# 遍历运行级别3中所有的服务
+for i in `ls /etc/rc3.d/S*` 
+do 
+    # 提取服务名称
+    CURSRV=`echo $i|cut -c 15-` 
+
+    echo $CURSRV 
+    case $CURSRV in 
+        # 列出需要保留的基本服务
+        cpuspeed | crond | irqbalance | microcode_ctl | mysqld | network | nginx | php-fpm | sendmail | sshd | syslog ) 
+            # 这些服务根据具体的应用情况设置，其中network、sshd、syslog是三项必须要启动的系统服务！ 
+            echo &quot;Base services, Skip!&quot; 
+
+        *) 
+            # 对于其他服务，关闭它们
+            echo &quot;change $CURSRV to off&quot; 
+            chkconfig --level 235 $CURSRV off  # 将服务设置为关闭
+            service $CURSRV stop  # 停止服务
+    esac 
+done 
+
+# 清空sysctl.conf文件
+rm -rf /etc/sysctl.conf 
+
+# 配置内核参数
+echo &quot;net.ipv4.ip_forward = 0 
+net.ipv4.conf.default.rp_filter = 1 
+net.ipv4.conf.default.accept_source_route = 0 
+kernel.sysrq = 0 
+kernel.core_uses_pid = 1 
+net.ipv4.tcp_syncookies = 1 
+kernel.msgmnb = 65536 
+kernel.msgmax = 65536 
+kernel.shmmax = 68719476736 
+kernel.shmall = 134217728 
+net.ipv4.ip_local_port_range = 1024 65536 
+net.core.rmem_max = 16777216 
+net.core.wmem_max = 16777216 
+net.ipv4.tcp_rmem = 4096 87380 16777216 
+net.ipv4.tcp_wmem = 4096 65536 16777216 
+net.ipv4.tcp_fin_timeout = 3 
+net.ipv4.tcp_tw_recycle = 1 
+net.core.netdev_max_backlog = 30000 
+net.ipv4.tcp_no_metrics_save = 1 
+net.core.somaxconn = 262144 
+net.ipv4.tcp_syncookies = 0 
+net.ipv4.tcp_max_orphans = 262144 
+net.ipv4.tcp_max_syn_backlog = 262144 
+net.ipv4.tcp_synack_retries = 2 
+net.ipv4.tcp_syn_retries = 2 
+vm.swappiness = 6&quot; &gt;&gt; /etc/sysctl.conf 
+
+# 输出内核优化配置完成的信息
+echo &quot;optimized kernel configure was done!&quot; 
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, PANDAKE.
+      <span class="lastupdated">Last updated on Sep 05, 2024.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

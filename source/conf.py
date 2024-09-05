@@ -24,13 +24,16 @@ language = 'zh_CN'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
+html_last_updated_fmt = '%b %d, %Y'
+html_domain_indices = True
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_use_index = True
+html_show_sphinx = True
 
 # multi-language docs
 language = 'en'
 locale_dirs = ['../locales/']   # path is example but recommended.
 gettext_compact = False  # optional.
 gettext_uuid = True  # optional.
-
 extensions = ['recommonmark','sphinx_markdown_tables']
