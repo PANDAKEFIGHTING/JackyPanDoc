@@ -10,7 +10,7 @@
 
 [^注意]: 安装需要注意勾选“Add python.exe to PATH”
 
-![微信截图_20240905115829](C:\Users\Administrator\Desktop\doc\images\微信截图_20240905115829.png)
+![](C:\Users\Administrator\Desktop\doc\source\_static\images\python.png)
 
 - Git
   - 网址：https://git-scm.com/
